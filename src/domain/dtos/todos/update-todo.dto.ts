@@ -2,7 +2,7 @@ export class UpdateTodoDto {
 
     private constructor(
 
-
+        public readonly id: number,
         public readonly text?: string,
         public readonly completedAt?: Date
     ){}
@@ -27,11 +27,11 @@ export class UpdateTodoDto {
 
         if(completedAt){
             newCompletedAt = new Date(completedAt)
-            if(newCompletedAt.toString() === `Invalid Date`){
+            if(newCompletedAt.toString() === 'Invalid Date'){
                 return ['completedAt must be a valid date', undefined];
             }
         }
 
-        return [undefined, new UpdateTodoDto(text, newCompletedAt)];
+        return [undefined, new UpdateTodoDto(id, text, newCompletedAt)];
     }
 }
